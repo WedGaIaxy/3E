@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fog Mind</title>
+  <style>
+    body {
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: auto; /* disables momentum scroll on iOS */
+      overflow-x: hidden;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: black;
+      font-family: sans-serif;
+    }
+
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .foreground {
+      will-change: transform;
+      transition: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url('3E image 1.png') center center / contain no-repeat;
+      background-color: black;
+      z-index: 10;
+      transform: translateY(0);
+      transition: transform 0.3s ease-out;
+      pointer-events: auto;
+    }
+
+    .content {
+      outline: 2px dashed lime;
+      max-width:1000px;
+      margin: 0 auto;
+      padding: 2rem; 
+      background-color: black;
+      color: white;      
+      min-height: 200vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content > *:first-child {
+      margin-top: 50vh;
+    }
+
+    .content::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .purplesmith {
+      outline: 2px dashed lime;
+      
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+      max-width: 600px;     /* Keep the image manageable */
+      height: auto;
+
+      margin-top: 2rem;
+    }
+
+
+    .scroll-hint {
+      position: fixed;
+      bottom: 5vh;
+      width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
+      color: white;
+      z-index: 20;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+    .scroll-hint.fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+  <div class="foreground"></div>
+  <div class="scroll-hint">↓ Scroll Towards Adventure ↓</div>
+
+  <div class="content">
+    <h1>Mages and Sages homepages</h1>
+    <p>Welcome to Mages and Sages, the multiverse's next hit ttrpg</p>
+    <p>Here we have coffee, crack cocaine, and even some tempo for the truly daring</p>
+    <p>For legal purposes that was a joke, come back in a bit once the website is functional you bozo.</p>
+    <a href="3E html buttons.html">stat tracker</a> | <a href="3E html 2.html">Test</a>
+    <img src="3E image 2.png" alt="The purplesmith" class="purplesmith">
+  </div>
+
+  <script>
+    const foreground = document.querySelector('.foreground');
+    const scrollHint = document.querySelector('.scroll-hint');
+    let maxSlide = window.innerHeight;
+    const speedMultiplier = 6;  // Adjust to control scroll speed
+
+    let virtualScroll = 0;
+    let isImageOffscreen = false;
+
+    // Lock native scroll initially
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('resize', () => {
+      maxSlide = window.innerHeight;
+      virtualScroll = Math.min(virtualScroll, maxSlide);
+    });
+
+    window.addEventListener('wheel', (e) => {
+      if (isImageOffscreen) return; // Native scroll active, do nothing
+
+      e.preventDefault(); // Prevent native scroll during image slide
+
+      // Increase virtual scroll based on wheel deltaY, scaled
+      virtualScroll += e.deltaY * speedMultiplier;
+
+      // Clamp virtualScroll so it doesn't go past maxSlide or below 0
+      virtualScroll = Math.min(Math.max(virtualScroll, 0), maxSlide);
+
+      // Move image up by virtualScroll px
+      foreground.style.transform = `translateY(-${virtualScroll}px)`;
+
+      // Fade out scroll hint on first scroll
+      if (virtualScroll > 1 && scrollHint && !scrollHint.classList.contains('fade-out')) {
+        scrollHint.classList.add('fade-out');
+      }
+
+      // Unlock native scroll when image fully offscreen
+      if (virtualScroll >= maxSlide) {
+        foreground.style.transform = 'translateY(-100%)';
+        foreground.style.pointerEvents = 'none';
+        document.body.style.overflow = 'auto'; // Unlock native scroll
+        isImageOffscreen = true;
+      }
+    }, { passive: false });
+
+  </script>
+
+</body>
+</html>
+
