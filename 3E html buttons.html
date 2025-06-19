@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Simple Site</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="3E html 1.html">Main page</a> | <a href="3E html 2.html">Test</a>
+  <h1>New ttrpg stat tracker</h1>
+
+  <div>
+    <label for="race"><strong>Choose Race:</strong></label>
+    <select id="race">
+      <option value="human">Human</option>
+      <option value="orc">Orc</option>
+      <option value="elf">Elf</option>
+    </select>
+  </div>
+
+
+
+  <div class="bar-container" data-id="health">
+    <div class="bar-label">Health</div>
+    <div class="bar" data-bar-id="0" data-color="#cc0000"></div>
+    <div class="buttons">
+      <button class="increase">+</button>
+      <button class="decrease">−</button>
+      <button class="grey-out">Expend</button>
+      <button class="restore">Regen</button>
+    </div>
+  </div>
+
+
+  <div class="bar-container" data-id="stamina">
+    <div class="bar-label">Stamina</div>
+    <div class="bar" data-bar-id="1" data-color=#6aa84f></div>
+    <div class="buttons">
+      <button class="increase">+</button>
+      <button class="decrease">−</button>
+      <button class="grey-out">Expend</button>
+      <button class="restore">Regen</button>
+    </div>
+  </div>
+
+  <div class="ability-container" data-for="stamina">
+    <div class="ability">
+      <label for="ability1">Athletics (Add to damage)</label>
+      <input type="number" id="ability1" min="0" max="10" value="0">
+    </div>
+    <div class="ability">
+      <label for="ability2">Agility (Add to op's atk roll DC)</label>
+      <input type="number" id="ability2" min="0" max="10" value="0">
+    </div>
+    <div class="ability">
+      <label for="ability3">Dexterity (Add to atk roll)</label>
+      <input type="number" id="ability3" min="0" max="10" value="0">
+    </div>
+    <div class="ability">
+      <label for="ability4">Speed (Add to move rolls)</label>
+      <input type="number" id="ability4" min="0" max="10" value="0">
+    </div>
+    <div class="ability">
+      <label for="ability5">Stealth (Add to op's perc. roll DC)</label>
+      <input type="number" id="ability5" min="0" max="10" value="0">
+    </div>
+  </div>
+
+
+  <div class="bar-container" data-id="sanity">
+    <div class="bar-label">Sanity</div>
+    <div class="bar" data-bar-id="2" data-color=#3d85c6></div>
+    <div class="buttons">
+      <button class="increase">+</button>
+      <button class="decrease">−</button>
+      <button class="grey-out">Expend</button>
+      <button class="restore">Regen</button>
+    </div>
+  </div>
+
+  <div class="bar-container" data-id="mana">
+    <div class="bar-label">Mana</div>
+    <div class="bar" data-bar-id="3" data-color=#e69138></div>
+    <div class="buttons">
+      <button class="increase">+</button>
+      <button class="decrease">−</button>
+      <button class="grey-out">Expend</button>
+      <button class="restore">Regen</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

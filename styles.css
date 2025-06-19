@@ -1,0 +1,117 @@
+/* styles.css */
+
+body {
+  font-family: 'Alegreya', serif;
+  padding: 20px;
+  color: white;
+  background: black;
+  max-width: 750px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.bar-label {
+  font-family: 'Alegreya', serif;
+  width: 80px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.bar {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 360px;        /* Fixed width container */
+  min-height: 40px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.segment-group {
+  display: flex;
+  width: 32px;         /* Fixed width for major segment */
+  margin-right: 4px;   /* Gap between major segments */
+  box-sizing: border-box;
+}
+
+.segment-group:last-child {
+  margin-right: 0;     /* No gap after last major segment */
+}
+
+.segment {
+  flex: 1;             /* Subsegments share equal space inside major segment */
+  height: 30px;
+  background-color: grey;
+  transition: background-color 0.3s ease;
+  margin: 0;           /* No gap between minor segments */
+  box-sizing: border-box;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+
+button {
+  font-family: 'Alegreya', serif;
+  height: 30px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-left: 15px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  background-color: #ddd;
+  border-radius: 4px;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #bbb;
+}
+
+.ability-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.ability {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Alegreya', serif;
+}
+
+.ability label {
+  font-weight: bold;
+}
+
+.ability input[type="number"] {
+  width: 40px;
+  padding: 2px 4px;
+  font-size: 14px;
+  font-family: 'Alegreya', serif;
+}
+
+
+
